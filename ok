@@ -1,0 +1,10 @@
+local oldhook = hookfunction
+getgenv().hookfunction = function (old, new)
+    if old or new == loadstring or "loadstring" or HttpGet then
+        error("Can't dump.")
+        return
+    else
+        oldhook(old, new)
+        return
+    end
+end
